@@ -8,8 +8,8 @@ def testing(test):
     accuracy = ((tp+tn)/len(test))*100      #calculate accuracy
                                             # total number of correct prediction / total number of prediction 
 
-    print("p =  ", p)
-    print("n =  ", n)
-    print("tp =  ", tp)
-    print("tn =  " , tn)
-    print("Accuracy =  %5.3f" % accuracy ,"%")
+    print("p =", p)
+    print("n =", n)
+    print("tp =", tp)
+    print("tn =" , tn)
+    print("Accuracy = %5.3f" % accuracy ,"%")

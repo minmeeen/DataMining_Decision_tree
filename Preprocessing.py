@@ -5,8 +5,8 @@ import pandas as pd
 def preprocessing(dataset):
     #checking
     #What attribute have missing values?
-    for i in dataset.columns:
-        print(dataset[i].unique())      #print only unique value. 
+    # for i in dataset.columns:
+    #     print(dataset[i].unique())      #print only unique value. 
 
     dataset = dataset.replace('?',np.nan)   #replace ? in dataset with NaN
 
@@ -33,8 +33,8 @@ def preprocessing(dataset):
 
     # checking
     # Are missing values still available?
-    for i in dataset.columns:
-        print(dataset[i].unique())      #print only unique value. If NaN is still available, it will show
+    # for i in dataset.columns:
+    #     print(dataset[i].unique())      #print only unique value. If NaN is still available, it will show
 
 
     dataset.to_csv('data/preprocessing_crx.csv', index=False, header=False)     #write preprocessing data in csv

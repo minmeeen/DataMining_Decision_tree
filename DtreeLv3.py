@@ -555,7 +555,8 @@ def findmaxgainLv3L2(dataset):
     # Info_A14 = inforD(a14,[a14CI[0][2],a14CI[1][2],a14CI[2][2],a14CI[3][2],a14CI[4][2],a14CI[5][2],a14CI[6][2],a14CI[7][2],a14CI[8][2],a14CI[9][2],a14CI[10][2],a14CI[11][2]])
     Info_A15 = inforD(a15,[a15CI[0][2],a15CI[1][2],a15CI[2][2]]) 
 
-    # แสดงผลการทำงานรอบแรก
+    # แสดงผลการทำงานLevel 3 Left X01XX
+    print("Level 3 Left Node A14 = X01XX ")
     print("A1 count is", a1)
     print("A2 count is",a2)
     print("A3 count is",a3)
@@ -572,9 +573,123 @@ def findmaxgainLv3L2(dataset):
     # print("A14 count is", a14)
     print("A15 count is", a15)
     print("A16 count is", a16)
-    """
+    print()
 
-    """
+    print("A1 Info relate to class",a1CI)
+    print("A2 Info relate to class",a2CI)
+    print("A3 Info relate to class",a3CI)
+    print("A4 Info relate to class",a4CI)
+    print("A5 Info relate to class",a5CI)
+    print("A6 Info relate to class",a6CI)
+    print("A7 Info relate to class",a7CI)
+    print("A8 Info relate to class",a8CI)
+    # print("A9 Info relate to class",a9CI)
+    print("A10 Info relate to class",a10CI)
+    print("A11 Info relate to class",a11CI)
+    print("A12 Info relate to class",a12CI)
+    print("A13 Info relate to class",a13CI)
+    # print("A14 Info relate to class",a14CI)
+    print("A15 Info relate to class",a15CI)
+
+    print()
+    print("Info(D) is %5.3f" % InD)
+    print("Info(A1 = b)  is %5.3f" % a1CI[0][2])
+    print("Info(A1 = a)  is %5.3f" % a1CI[1][2])
+
+    print("Info(A2 <=25)  is %5.3f" % a2CI[0][2])
+    print("Info(A2 >25 and <=30)   is %5.3f" % a2CI[1][2])
+    print("Info(A2 >30 and <=40)   is %5.3f" % a2CI[2][2])
+    print("Info(A2 >40)   is %5.3f" % a2CI[3][2])
+
+    print("Info(A3 <= 1)   is %5.3f" % a3CI[0][2])
+    print("Info(A3 >1 and <=3)   is %5.3f" % a3CI[1][2])
+    print("Info(A3 >3 and <=8)   is %5.3f" % a3CI[2][2])
+    print("Info(A3 >8)   is %5.3f" % a3CI[3][2])
+
+    print("Info(A4 = u)  is %5.3f" % a4CI[0][2])
+    print("Info(A4 = y)  is %5.3f" % a4CI[1][2])
+    print("Info(A4 = l)  is %5.3f" % a4CI[2][2])
+    print("Info(A4 = t)  is %5.3f" % a4CI[3][2])
+
+    print("Info(A5 = g)  is %5.3f" % a5CI[0][2])
+    print("Info(A5 = p)  is %5.3f" % a5CI[1][2])
+    print("Info(A5 = gg)  is %5.3f" % a5CI[2][2])
+
+    print("Info(A6 = c)  is %5.3f" % a6CI[0][2])
+    print("Info(A6 = d) is %5.3f" % a6CI[1][2])
+    print("Info(A6 = cc)  is %5.3f" % a6CI[2][2])
+    print("Info(A6 = i)  is %5.3f" % a6CI[3][2])
+    print("Info(A6 = j)  is %5.3f" % a6CI[4][2])
+    print("Info(A6 = k)  is %5.3f" % a6CI[5][2])
+    print("Info(A6 = m)  is %5.3f" % a6CI[6][2])
+    print("Info(A6 = r)  is %5.3f" % a6CI[7][2])
+    print("Info(A6 = q)  is %5.3f" % a6CI[8][2])
+    print("Info(A6 = w)  is %5.3f" % a6CI[9][2])
+    print("Info(A6 = x)  is %5.3f" % a6CI[10][2])
+    print("Info(A6 = e)  is %5.3f" % a6CI[11][2])
+    print("Info(A6 = aa)  is %5.3f" % a6CI[12][2])
+    print("Info(A6 = ff)  is %5.3f" % a6CI[13][2])
+
+    print("Info(A7 = v)  is %5.3f" % a7CI[0][2])
+    print("Info(A7 = h)  is %5.3f" % a7CI[1][2])
+    print("Info(A7 = bb)  is %5.3f" % a7CI[2][2])
+    print("Info(A7 = j)  is %5.3f" % a7CI[3][2])
+    print("Info(A7 = n)  is %5.3f" % a7CI[4][2])
+    print("Info(A7 = z)  is %5.3f" % a7CI[5][2])
+    print("Info(A7 = dd)  is %5.3f" % a7CI[6][2])
+    print("Info(A7 = ff)  is %5.3f" % a7CI[7][2])
+    print("Info(A7 = o)  is %5.3f" % a7CI[8][2])
+
+
+    print("Info(A8 <=2)  is %5.3f" % a8CI[0][2])  
+    print("Info(A8 >0.2 and <=1)   is %5.3f" % a8CI[1][2])  
+    print("Info(A8 >1 and <=3)  is %5.3f" % a8CI[2][2])  
+    print("Info(A8 >3)   is %5.3f" % a8CI[3][2])  
+
+
+    #A9
+
+    print("Info(A10 = t)  is %5.3f" % a10CI[0][2])
+    print("Info(A10 = f)  is %5.3f" % a10CI[1][2])
+
+
+    print("Info(A11 = <=3)  is %5.3f" % a11CI[0][2])
+    print("Info(A11 = >3)  is %5.3f" % a11CI[1][2])
+
+
+    print("Info(A12 = t)  is %5.3f" % a12CI[0][2])
+    print("Info(A12 = f)  is %5.3f" % a12CI[1][2])
+
+    print("Info(A13 = g)  is %5.3f" % a13CI[0][2])
+    print("Info(A13 = p)  is %5.3f" % a13CI[1][2])
+    print("Info(A13 = s)  is %5.3f" % a13CI[2][2])
+
+
+    #A14
+
+
+    print("Info(A15 <=5)  is %5.3f" % a15CI[0][2])
+    print("Info(A15 >5 and <=395)  is %5.3f" % a15CI[1][2])
+    print("Info(A15 >395)  is %5.3f" % a15CI[2][2])
+
+    print()
+    print("Info A1 (D) is %5.3f" % Info_A1)
+    print("Info A2 (D) is %5.3f" % Info_A2)
+    print("Info A3 (D) is %5.3f" % Info_A3)
+    print("Info A4 (D) is %5.3f" % Info_A4)
+    print("Info A5 (D) is %5.3f" % Info_A5)
+    print("Info A6 (D) is %5.3f" % Info_A6)
+    print("Info A7 (D) is %5.3f" % Info_A7)
+    print("Info A8 (D) is %5.3f" % Info_A8)
+    # print("Info A9 (D) is %5.3f" % Info_A9)
+    print("Info A10 (D) is %5.3f" % Info_A10)
+    print("Info A11 (D) is %5.3f" % Info_A11)
+    print("Info A12 (D) is %5.3f" % Info_A12)
+    print("Info A13 (D) is %5.3f" % Info_A13)
+    # print("Info A14 (D) is %5.3f" % Info_A14)
+    print("Info A15 (D) is %5.3f" % Info_A15)
+
+
     print("\n***Gain results of Lv.3 Left 2 dataset***")
     print("InD is %5.3f"% InD)
     gainA1=InD-Info_A1
@@ -1247,7 +1362,8 @@ def findmaxgainLv3L3(dataset):
     # Info_A14 = inforD(a14,[a14CI[0][2],a14CI[1][2],a14CI[2][2],a14CI[3][2],a14CI[4][2],a14CI[5][2],a14CI[6][2],a14CI[7][2],a14CI[8][2],a14CI[9][2],a14CI[10][2],a14CI[11][2]])
     Info_A15 = inforD(a15,[a15CI[0][2],a15CI[1][2],a15CI[2][2]]) 
 
-    # แสดงผลการทำงานรอบแรก
+    # แสดงผลการทำงานLevel 3 Left X02XX
+    print("Level 3 Left Node A14 = X02XX ")
     print("A1 count is", a1)
     print("A2 count is",a2)
     print("A3 count is",a3)
@@ -1264,9 +1380,123 @@ def findmaxgainLv3L3(dataset):
     # print("A14 count is", a14)
     print("A15 count is", a15)
     print("A16 count is", a16)
-    """
+    print()
 
-    """
+    print("A1 Info relate to class",a1CI)
+    print("A2 Info relate to class",a2CI)
+    print("A3 Info relate to class",a3CI)
+    print("A4 Info relate to class",a4CI)
+    print("A5 Info relate to class",a5CI)
+    print("A6 Info relate to class",a6CI)
+    print("A7 Info relate to class",a7CI)
+    print("A8 Info relate to class",a8CI)
+    # print("A9 Info relate to class",a9CI)
+    print("A10 Info relate to class",a10CI)
+    print("A11 Info relate to class",a11CI)
+    print("A12 Info relate to class",a12CI)
+    print("A13 Info relate to class",a13CI)
+    # print("A14 Info relate to class",a14CI)
+    print("A15 Info relate to class",a15CI)
+
+    print()
+    print("Info(D) is %5.3f" % InD)
+    print("Info(A1 = b)  is %5.3f" % a1CI[0][2])
+    print("Info(A1 = a)  is %5.3f" % a1CI[1][2])
+
+    print("Info(A2 <=25)  is %5.3f" % a2CI[0][2])
+    print("Info(A2 >25 and <=30)   is %5.3f" % a2CI[1][2])
+    print("Info(A2 >30 and <=40)   is %5.3f" % a2CI[2][2])
+    print("Info(A2 >40)   is %5.3f" % a2CI[3][2])
+
+    print("Info(A3 <= 1)   is %5.3f" % a3CI[0][2])
+    print("Info(A3 >1 and <=3)   is %5.3f" % a3CI[1][2])
+    print("Info(A3 >3 and <=8)   is %5.3f" % a3CI[2][2])
+    print("Info(A3 >8)   is %5.3f" % a3CI[3][2])
+
+    print("Info(A4 = u)  is %5.3f" % a4CI[0][2])
+    print("Info(A4 = y)  is %5.3f" % a4CI[1][2])
+    print("Info(A4 = l)  is %5.3f" % a4CI[2][2])
+    print("Info(A4 = t)  is %5.3f" % a4CI[3][2])
+
+    print("Info(A5 = g)  is %5.3f" % a5CI[0][2])
+    print("Info(A5 = p)  is %5.3f" % a5CI[1][2])
+    print("Info(A5 = gg)  is %5.3f" % a5CI[2][2])
+
+    print("Info(A6 = c)  is %5.3f" % a6CI[0][2])
+    print("Info(A6 = d) is %5.3f" % a6CI[1][2])
+    print("Info(A6 = cc)  is %5.3f" % a6CI[2][2])
+    print("Info(A6 = i)  is %5.3f" % a6CI[3][2])
+    print("Info(A6 = j)  is %5.3f" % a6CI[4][2])
+    print("Info(A6 = k)  is %5.3f" % a6CI[5][2])
+    print("Info(A6 = m)  is %5.3f" % a6CI[6][2])
+    print("Info(A6 = r)  is %5.3f" % a6CI[7][2])
+    print("Info(A6 = q)  is %5.3f" % a6CI[8][2])
+    print("Info(A6 = w)  is %5.3f" % a6CI[9][2])
+    print("Info(A6 = x)  is %5.3f" % a6CI[10][2])
+    print("Info(A6 = e)  is %5.3f" % a6CI[11][2])
+    print("Info(A6 = aa)  is %5.3f" % a6CI[12][2])
+    print("Info(A6 = ff)  is %5.3f" % a6CI[13][2])
+
+    print("Info(A7 = v)  is %5.3f" % a7CI[0][2])
+    print("Info(A7 = h)  is %5.3f" % a7CI[1][2])
+    print("Info(A7 = bb)  is %5.3f" % a7CI[2][2])
+    print("Info(A7 = j)  is %5.3f" % a7CI[3][2])
+    print("Info(A7 = n)  is %5.3f" % a7CI[4][2])
+    print("Info(A7 = z)  is %5.3f" % a7CI[5][2])
+    print("Info(A7 = dd)  is %5.3f" % a7CI[6][2])
+    print("Info(A7 = ff)  is %5.3f" % a7CI[7][2])
+    print("Info(A7 = o)  is %5.3f" % a7CI[8][2])
+
+
+    print("Info(A8 <=2)  is %5.3f" % a8CI[0][2])  
+    print("Info(A8 >0.2 and <=1)   is %5.3f" % a8CI[1][2])  
+    print("Info(A8 >1 and <=3)  is %5.3f" % a8CI[2][2])  
+    print("Info(A8 >3)   is %5.3f" % a8CI[3][2])  
+
+
+    #A9
+
+    print("Info(A10 = t)  is %5.3f" % a10CI[0][2])
+    print("Info(A10 = f)  is %5.3f" % a10CI[1][2])
+
+
+    print("Info(A11 = <=3)  is %5.3f" % a11CI[0][2])
+    print("Info(A11 = >3)  is %5.3f" % a11CI[1][2])
+
+
+    print("Info(A12 = t)  is %5.3f" % a12CI[0][2])
+    print("Info(A12 = f)  is %5.3f" % a12CI[1][2])
+
+    print("Info(A13 = g)  is %5.3f" % a13CI[0][2])
+    print("Info(A13 = p)  is %5.3f" % a13CI[1][2])
+    print("Info(A13 = s)  is %5.3f" % a13CI[2][2])
+
+
+    #A14
+
+
+    print("Info(A15 <=5)  is %5.3f" % a15CI[0][2])
+    print("Info(A15 >5 and <=395)  is %5.3f" % a15CI[1][2])
+    print("Info(A15 >395)  is %5.3f" % a15CI[2][2])
+
+    print()
+    print("Info A1 (D) is %5.3f" % Info_A1)
+    print("Info A2 (D) is %5.3f" % Info_A2)
+    print("Info A3 (D) is %5.3f" % Info_A3)
+    print("Info A4 (D) is %5.3f" % Info_A4)
+    print("Info A5 (D) is %5.3f" % Info_A5)
+    print("Info A6 (D) is %5.3f" % Info_A6)
+    print("Info A7 (D) is %5.3f" % Info_A7)
+    print("Info A8 (D) is %5.3f" % Info_A8)
+    # print("Info A9 (D) is %5.3f" % Info_A9)
+    print("Info A10 (D) is %5.3f" % Info_A10)
+    print("Info A11 (D) is %5.3f" % Info_A11)
+    print("Info A12 (D) is %5.3f" % Info_A12)
+    print("Info A13 (D) is %5.3f" % Info_A13)
+    # print("Info A14 (D) is %5.3f" % Info_A14)
+    print("Info A15 (D) is %5.3f" % Info_A15)
+
+
     print("\n***Gain results of Lv.3 Left 3 dataset***")
     print("InD is %5.3f"% InD)
     gainA1=InD-Info_A1
@@ -1940,7 +2170,9 @@ def findmaxgainLv3L4(dataset):
     # Info_A14 = inforD(a14,[a14CI[0][2],a14CI[1][2],a14CI[2][2],a14CI[3][2],a14CI[4][2],a14CI[5][2],a14CI[6][2],a14CI[7][2],a14CI[8][2],a14CI[9][2],a14CI[10][2],a14CI[11][2]])
     Info_A15 = inforD(a15,[a15CI[0][2],a15CI[1][2],a15CI[2][2]]) 
 
-    # แสดงผลการทำงานรอบแรก
+    
+    # แสดงผลการทำงานLevel 3 Left X03XX
+    print("Level 3 Left Node A14 = X03XX ")
     print("A1 count is", a1)
     print("A2 count is",a2)
     print("A3 count is",a3)
@@ -1957,9 +2189,123 @@ def findmaxgainLv3L4(dataset):
     # print("A14 count is", a14)
     print("A15 count is", a15)
     print("A16 count is", a16)
-    """
+    print()
 
-    """
+    print("A1 Info relate to class",a1CI)
+    print("A2 Info relate to class",a2CI)
+    print("A3 Info relate to class",a3CI)
+    print("A4 Info relate to class",a4CI)
+    print("A5 Info relate to class",a5CI)
+    print("A6 Info relate to class",a6CI)
+    print("A7 Info relate to class",a7CI)
+    print("A8 Info relate to class",a8CI)
+    # print("A9 Info relate to class",a9CI)
+    print("A10 Info relate to class",a10CI)
+    print("A11 Info relate to class",a11CI)
+    print("A12 Info relate to class",a12CI)
+    print("A13 Info relate to class",a13CI)
+    # print("A14 Info relate to class",a14CI)
+    print("A15 Info relate to class",a15CI)
+
+    print()
+    print("Info(D) is %5.3f" % InD)
+    print("Info(A1 = b)  is %5.3f" % a1CI[0][2])
+    print("Info(A1 = a)  is %5.3f" % a1CI[1][2])
+
+    print("Info(A2 <=25)  is %5.3f" % a2CI[0][2])
+    print("Info(A2 >25 and <=30)   is %5.3f" % a2CI[1][2])
+    print("Info(A2 >30 and <=40)   is %5.3f" % a2CI[2][2])
+    print("Info(A2 >40)   is %5.3f" % a2CI[3][2])
+
+    print("Info(A3 <= 1)   is %5.3f" % a3CI[0][2])
+    print("Info(A3 >1 and <=3)   is %5.3f" % a3CI[1][2])
+    print("Info(A3 >3 and <=8)   is %5.3f" % a3CI[2][2])
+    print("Info(A3 >8)   is %5.3f" % a3CI[3][2])
+
+    print("Info(A4 = u)  is %5.3f" % a4CI[0][2])
+    print("Info(A4 = y)  is %5.3f" % a4CI[1][2])
+    print("Info(A4 = l)  is %5.3f" % a4CI[2][2])
+    print("Info(A4 = t)  is %5.3f" % a4CI[3][2])
+
+    print("Info(A5 = g)  is %5.3f" % a5CI[0][2])
+    print("Info(A5 = p)  is %5.3f" % a5CI[1][2])
+    print("Info(A5 = gg)  is %5.3f" % a5CI[2][2])
+
+    print("Info(A6 = c)  is %5.3f" % a6CI[0][2])
+    print("Info(A6 = d) is %5.3f" % a6CI[1][2])
+    print("Info(A6 = cc)  is %5.3f" % a6CI[2][2])
+    print("Info(A6 = i)  is %5.3f" % a6CI[3][2])
+    print("Info(A6 = j)  is %5.3f" % a6CI[4][2])
+    print("Info(A6 = k)  is %5.3f" % a6CI[5][2])
+    print("Info(A6 = m)  is %5.3f" % a6CI[6][2])
+    print("Info(A6 = r)  is %5.3f" % a6CI[7][2])
+    print("Info(A6 = q)  is %5.3f" % a6CI[8][2])
+    print("Info(A6 = w)  is %5.3f" % a6CI[9][2])
+    print("Info(A6 = x)  is %5.3f" % a6CI[10][2])
+    print("Info(A6 = e)  is %5.3f" % a6CI[11][2])
+    print("Info(A6 = aa)  is %5.3f" % a6CI[12][2])
+    print("Info(A6 = ff)  is %5.3f" % a6CI[13][2])
+
+    print("Info(A7 = v)  is %5.3f" % a7CI[0][2])
+    print("Info(A7 = h)  is %5.3f" % a7CI[1][2])
+    print("Info(A7 = bb)  is %5.3f" % a7CI[2][2])
+    print("Info(A7 = j)  is %5.3f" % a7CI[3][2])
+    print("Info(A7 = n)  is %5.3f" % a7CI[4][2])
+    print("Info(A7 = z)  is %5.3f" % a7CI[5][2])
+    print("Info(A7 = dd)  is %5.3f" % a7CI[6][2])
+    print("Info(A7 = ff)  is %5.3f" % a7CI[7][2])
+    print("Info(A7 = o)  is %5.3f" % a7CI[8][2])
+
+
+    print("Info(A8 <=2)  is %5.3f" % a8CI[0][2])  
+    print("Info(A8 >0.2 and <=1)   is %5.3f" % a8CI[1][2])  
+    print("Info(A8 >1 and <=3)  is %5.3f" % a8CI[2][2])  
+    print("Info(A8 >3)   is %5.3f" % a8CI[3][2])  
+
+
+    #A9
+
+    print("Info(A10 = t)  is %5.3f" % a10CI[0][2])
+    print("Info(A10 = f)  is %5.3f" % a10CI[1][2])
+
+
+    print("Info(A11 = <=3)  is %5.3f" % a11CI[0][2])
+    print("Info(A11 = >3)  is %5.3f" % a11CI[1][2])
+
+
+    print("Info(A12 = t)  is %5.3f" % a12CI[0][2])
+    print("Info(A12 = f)  is %5.3f" % a12CI[1][2])
+
+    print("Info(A13 = g)  is %5.3f" % a13CI[0][2])
+    print("Info(A13 = p)  is %5.3f" % a13CI[1][2])
+    print("Info(A13 = s)  is %5.3f" % a13CI[2][2])
+
+
+    #A14
+
+
+    print("Info(A15 <=5)  is %5.3f" % a15CI[0][2])
+    print("Info(A15 >5 and <=395)  is %5.3f" % a15CI[1][2])
+    print("Info(A15 >395)  is %5.3f" % a15CI[2][2])
+
+    print()
+    print("Info A1 (D) is %5.3f" % Info_A1)
+    print("Info A2 (D) is %5.3f" % Info_A2)
+    print("Info A3 (D) is %5.3f" % Info_A3)
+    print("Info A4 (D) is %5.3f" % Info_A4)
+    print("Info A5 (D) is %5.3f" % Info_A5)
+    print("Info A6 (D) is %5.3f" % Info_A6)
+    print("Info A7 (D) is %5.3f" % Info_A7)
+    print("Info A8 (D) is %5.3f" % Info_A8)
+    # print("Info A9 (D) is %5.3f" % Info_A9)
+    print("Info A10 (D) is %5.3f" % Info_A10)
+    print("Info A11 (D) is %5.3f" % Info_A11)
+    print("Info A12 (D) is %5.3f" % Info_A12)
+    print("Info A13 (D) is %5.3f" % Info_A13)
+    # print("Info A14 (D) is %5.3f" % Info_A14)
+    print("Info A15 (D) is %5.3f" % Info_A15)
+
+
     print("\n***Gain results of Lv.3 Left 4 dataset***")
     print("InD is %5.3f"% InD)
     gainA1=InD-Info_A1
@@ -2631,7 +2977,8 @@ def findmaxgainLv3L5(dataset):
     # Info_A14 = inforD(a14,[a14CI[0][2],a14CI[1][2],a14CI[2][2],a14CI[3][2],a14CI[4][2],a14CI[5][2],a14CI[6][2],a14CI[7][2],a14CI[8][2],a14CI[9][2],a14CI[10][2],a14CI[11][2]])
     Info_A15 = inforD(a15,[a15CI[0][2],a15CI[1][2],a15CI[2][2]]) 
 
-    # แสดงผลการทำงานรอบแรก
+    # แสดงผลการทำงานLevel 3 Left X04XX
+    print("Level 3 Left Node A14 = X04XX ")
     print("A1 count is", a1)
     print("A2 count is",a2)
     print("A3 count is",a3)
@@ -2648,9 +2995,123 @@ def findmaxgainLv3L5(dataset):
     # print("A14 count is", a14)
     print("A15 count is", a15)
     print("A16 count is", a16)
-    """
+    print()
 
-    """
+    print("A1 Info relate to class",a1CI)
+    print("A2 Info relate to class",a2CI)
+    print("A3 Info relate to class",a3CI)
+    print("A4 Info relate to class",a4CI)
+    print("A5 Info relate to class",a5CI)
+    print("A6 Info relate to class",a6CI)
+    print("A7 Info relate to class",a7CI)
+    print("A8 Info relate to class",a8CI)
+    # print("A9 Info relate to class",a9CI)
+    print("A10 Info relate to class",a10CI)
+    print("A11 Info relate to class",a11CI)
+    print("A12 Info relate to class",a12CI)
+    print("A13 Info relate to class",a13CI)
+    # print("A14 Info relate to class",a14CI)
+    print("A15 Info relate to class",a15CI)
+
+    print()
+    print("Info(D) is %5.3f" % InD)
+    print("Info(A1 = b)  is %5.3f" % a1CI[0][2])
+    print("Info(A1 = a)  is %5.3f" % a1CI[1][2])
+
+    print("Info(A2 <=25)  is %5.3f" % a2CI[0][2])
+    print("Info(A2 >25 and <=30)   is %5.3f" % a2CI[1][2])
+    print("Info(A2 >30 and <=40)   is %5.3f" % a2CI[2][2])
+    print("Info(A2 >40)   is %5.3f" % a2CI[3][2])
+
+    print("Info(A3 <= 1)   is %5.3f" % a3CI[0][2])
+    print("Info(A3 >1 and <=3)   is %5.3f" % a3CI[1][2])
+    print("Info(A3 >3 and <=8)   is %5.3f" % a3CI[2][2])
+    print("Info(A3 >8)   is %5.3f" % a3CI[3][2])
+
+    print("Info(A4 = u)  is %5.3f" % a4CI[0][2])
+    print("Info(A4 = y)  is %5.3f" % a4CI[1][2])
+    print("Info(A4 = l)  is %5.3f" % a4CI[2][2])
+    print("Info(A4 = t)  is %5.3f" % a4CI[3][2])
+
+    print("Info(A5 = g)  is %5.3f" % a5CI[0][2])
+    print("Info(A5 = p)  is %5.3f" % a5CI[1][2])
+    print("Info(A5 = gg)  is %5.3f" % a5CI[2][2])
+
+    print("Info(A6 = c)  is %5.3f" % a6CI[0][2])
+    print("Info(A6 = d) is %5.3f" % a6CI[1][2])
+    print("Info(A6 = cc)  is %5.3f" % a6CI[2][2])
+    print("Info(A6 = i)  is %5.3f" % a6CI[3][2])
+    print("Info(A6 = j)  is %5.3f" % a6CI[4][2])
+    print("Info(A6 = k)  is %5.3f" % a6CI[5][2])
+    print("Info(A6 = m)  is %5.3f" % a6CI[6][2])
+    print("Info(A6 = r)  is %5.3f" % a6CI[7][2])
+    print("Info(A6 = q)  is %5.3f" % a6CI[8][2])
+    print("Info(A6 = w)  is %5.3f" % a6CI[9][2])
+    print("Info(A6 = x)  is %5.3f" % a6CI[10][2])
+    print("Info(A6 = e)  is %5.3f" % a6CI[11][2])
+    print("Info(A6 = aa)  is %5.3f" % a6CI[12][2])
+    print("Info(A6 = ff)  is %5.3f" % a6CI[13][2])
+
+    print("Info(A7 = v)  is %5.3f" % a7CI[0][2])
+    print("Info(A7 = h)  is %5.3f" % a7CI[1][2])
+    print("Info(A7 = bb)  is %5.3f" % a7CI[2][2])
+    print("Info(A7 = j)  is %5.3f" % a7CI[3][2])
+    print("Info(A7 = n)  is %5.3f" % a7CI[4][2])
+    print("Info(A7 = z)  is %5.3f" % a7CI[5][2])
+    print("Info(A7 = dd)  is %5.3f" % a7CI[6][2])
+    print("Info(A7 = ff)  is %5.3f" % a7CI[7][2])
+    print("Info(A7 = o)  is %5.3f" % a7CI[8][2])
+
+
+    print("Info(A8 <=2)  is %5.3f" % a8CI[0][2])  
+    print("Info(A8 >0.2 and <=1)   is %5.3f" % a8CI[1][2])  
+    print("Info(A8 >1 and <=3)  is %5.3f" % a8CI[2][2])  
+    print("Info(A8 >3)   is %5.3f" % a8CI[3][2])  
+
+
+    #A9
+
+    print("Info(A10 = t)  is %5.3f" % a10CI[0][2])
+    print("Info(A10 = f)  is %5.3f" % a10CI[1][2])
+
+
+    print("Info(A11 = <=3)  is %5.3f" % a11CI[0][2])
+    print("Info(A11 = >3)  is %5.3f" % a11CI[1][2])
+
+
+    print("Info(A12 = t)  is %5.3f" % a12CI[0][2])
+    print("Info(A12 = f)  is %5.3f" % a12CI[1][2])
+
+    print("Info(A13 = g)  is %5.3f" % a13CI[0][2])
+    print("Info(A13 = p)  is %5.3f" % a13CI[1][2])
+    print("Info(A13 = s)  is %5.3f" % a13CI[2][2])
+
+
+    #A14
+
+
+    print("Info(A15 <=5)  is %5.3f" % a15CI[0][2])
+    print("Info(A15 >5 and <=395)  is %5.3f" % a15CI[1][2])
+    print("Info(A15 >395)  is %5.3f" % a15CI[2][2])
+
+    print()
+    print("Info A1 (D) is %5.3f" % Info_A1)
+    print("Info A2 (D) is %5.3f" % Info_A2)
+    print("Info A3 (D) is %5.3f" % Info_A3)
+    print("Info A4 (D) is %5.3f" % Info_A4)
+    print("Info A5 (D) is %5.3f" % Info_A5)
+    print("Info A6 (D) is %5.3f" % Info_A6)
+    print("Info A7 (D) is %5.3f" % Info_A7)
+    print("Info A8 (D) is %5.3f" % Info_A8)
+    # print("Info A9 (D) is %5.3f" % Info_A9)
+    print("Info A10 (D) is %5.3f" % Info_A10)
+    print("Info A11 (D) is %5.3f" % Info_A11)
+    print("Info A12 (D) is %5.3f" % Info_A12)
+    print("Info A13 (D) is %5.3f" % Info_A13)
+    # print("Info A14 (D) is %5.3f" % Info_A14)
+    print("Info A15 (D) is %5.3f" % Info_A15)
+
+
     print("\n***Gain results of Lv.3 Left 5 dataset***")
     print("InD is %5.3f"% InD)
     gainA1=InD-Info_A1

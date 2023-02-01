@@ -9,9 +9,9 @@ from Testing import *
 import pandas as pd
 
 #Add column name
-dataset_col = ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8' , 'A9','A10', 'A11', 'A12', 'A13', 'A14' , 'A15', 'A16']
+dataset_col = ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8' , 'A9','A10', 'A11', 'A12', 'A13', 'A14' , 'A15', 'A16']  #column name
 dataset = pd.read_csv("data/crx.data", names=dataset_col)   #read data
-dataset.head()      
+dataset.head()      #add column
 # print(dataset.describe())       #ดูค่าmean max min etc. ของแต่ละ attribute
 # print(dataset.dtypes)       #print type ของแต่ละ attribute
 
@@ -19,7 +19,7 @@ dataset.head()
 data = preprocessing(dataset)
 
 #แบ่งข้อมูลเพื่อใช้สำหรับtrainเพื่อสร้าง decision tree และทดสอบ
-dataset, test = train_test_split(data, test_size=0.2, random_state=3)
+dataset, test = train_test_split(data, test_size=0.2, random_state=3)   #split training and testing 80:20, randomครั้งละ 3
 dataset.to_csv('data/training_crx.csv', index=False, header=False)  #write csv for training dataset
 test.to_csv('data/testing_crx.csv', index=False, header=False)  #write csv for testing dataset
 
@@ -72,290 +72,289 @@ a15CI=[[0 for i in range(M)] for j in range(3)] # zero matrix 3 rows 3 columns (
 
 a16=np.zeros(2)     # zero array for count sample in A16
 
-        
     
-#วน loop เพื่อนับข้อมูล แยกตามรายละเอียด attb และ class
+#วน loop เพื่อนับข้อมูล แยกตามรายละเอียด attribute และ class
 for i in range(0,len(dataset)):
     #A1
     if (dataset.iloc[i][0] == 'b'):  #A1 = 'b'   
         a1[0]+=1 # total sample A1 = 'b'
         if (dataset.iloc[i][0] == 'b') and (dataset.iloc[i][15] == '+'):
-            a1CI[0][0]+=1 #class +
+            a1CI[0][0]+=1 #count A1 = 'b' and class +
         else:
-            a1CI[0][1]+=1 #class -
+            a1CI[0][1]+=1 #count A1 = 'b' and class -
     elif(dataset.iloc[i][0] == 'a'):    #A1 = 'a'
         a1[1]+=1 # total sample A1 = 'a'
         if (dataset.iloc[i][0] == 'a') and (dataset.iloc[i][15] == '+'):
-            a1CI[1][0]+=1 #class +
+            a1CI[1][0]+=1 #count A1 = 'a' and class +
         else:
-            a1CI[1][1]+=1 #class -
+            a1CI[1][1]+=1 #count A1 = 'a' and class -
 
     #A2
-    if (float(dataset.iloc[i][1]) <= 25):   
+    if (float(dataset.iloc[i][1]) <= 25):   #A2 <=25
         a2[0]+=1 # total sample A2 <=25
         if (float(dataset.iloc[i][1]) <= 25) and (dataset.iloc[i][15] == '+'):
-            a2CI[0][0]+=1 #A2 <= 25 and class +
+            a2CI[0][0]+=1 #count A2 <= 25 and class +
         else:
-            a2CI[0][1]+=1 #class -
-    elif(float(dataset.iloc[i][1]) >25 and float(dataset.iloc[i][1])<=30): 
+            a2CI[0][1]+=1 #count A2 <= 25 class -
+    elif(float(dataset.iloc[i][1]) >25 and float(dataset.iloc[i][1])<=30): #25 < A2 <=30
         a2[1]+=1 # total sample 25 < A2 <= 30 
         if (float(dataset.iloc[i][1]) >25 and float(dataset.iloc[i][1])<=30) and (dataset.iloc[i][15] == '+'):
-            a2CI[1][0]+=1 #25 < A2 <= 30  and class +
+            a2CI[1][0]+=1 #count 25 < A2 <= 30  and class +
         else:
-            a2CI[1][1]+=1 #25 < A2 <= 30 and class -
-    elif(float(dataset.iloc[i][1]) > 30 and float(dataset.iloc[i][1])<=40): 
+            a2CI[1][1]+=1 #count 25 < A2 <= 30 and class -
+    elif(float(dataset.iloc[i][1]) > 30 and float(dataset.iloc[i][1])<=40): #30 < A2 <=40
         a2[2]+=1 # total sample 30 < A2 <= 40
         if (float(dataset.iloc[i][1]) > 30 and float(dataset.iloc[i][1])<=40) and (dataset.iloc[i][15] == '+'):
-            a2CI[2][0]+=1 #30 < A2 <= 40 and class +
+            a2CI[2][0]+=1 # count 30 < A2 <= 40 and class +
         else:
-            a2CI[2][1]+=1 #class -
-    elif(float(dataset.iloc[i][1]) > 40): 
+            a2CI[2][1]+=1 #count 30 < A2 <=40 and class -
+    elif(float(dataset.iloc[i][1]) > 40):   #A2 > 40 
         a2[3]+=1 # total sample A2>40
         if (float(dataset.iloc[i][1]) > 40) and (dataset.iloc[i][15] == '+'):
-            a2CI[3][0]+=1 #A2>40 and class +
+            a2CI[3][0]+=1 #count A2>40 and class +
         else:
-            a2CI[3][1]+=1 #class -
+            a2CI[3][1]+=1 #count A2>40 and class -
 
     #A3
-    if (float(dataset.iloc[i][2]) <=1): 
+    if (float(dataset.iloc[i][2]) <=1): #A3 <= 1
         a3[0]+=1 # total sample A3<=1
         if (float(dataset.iloc[i][2]) <=1) and (dataset.iloc[i][15] == '+'):
-            a3CI[0][0]+=1 #class +
+            a3CI[0][0]+=1 #count A3 <= 1 and class +
         else:
-            a3CI[0][1]+=1 #class -
-    elif(float(dataset.iloc[i][2]) >1 and float(dataset.iloc[i][2])<=3): 
-        a3[1]+=1 # total sample >1 A3<=3
+            a3CI[0][1]+=1 #count A3 <= 1 and class -
+    elif(float(dataset.iloc[i][2]) >1 and float(dataset.iloc[i][2])<=3): #1 < A3 <=3
+        a3[1]+=1 # total sample 1< A3 <=3
         if (float(dataset.iloc[i][2]) >1 and float(dataset.iloc[i][2])<=3) and (dataset.iloc[i][15] == '+'):
-            a3CI[1][0]+=1 #class +
+            a3CI[1][0]+=1 #count 1 < A3 <=3 and class +
         else:
-            a3CI[1][1]+=1 #class -
-    elif(float(dataset.iloc[i][2]) > 3 and float(dataset.iloc[i][2])<=8): 
-        a3[2]+=1 # total sample 3 > A3 <=8
+            a3CI[1][1]+=1 #count 1 < A3 <=3 and class -
+    elif(float(dataset.iloc[i][2]) > 3 and float(dataset.iloc[i][2])<=8): #3 < A3 <=8
+        a3[2]+=1 # total sample 3 < A3 <=8
         if (float(dataset.iloc[i][2]) > 3 and float(dataset.iloc[i][2])<=8) and (dataset.iloc[i][15] == '+'):
-            a3CI[2][0]+=1 #class +
+            a3CI[2][0]+=1 #count 3 < A3 <=8 and class +
         else:
-            a3CI[2][1]+=1 #class -
-    elif(float(dataset.iloc[i][2]) > 8): 
+            a3CI[2][1]+=1 #count 3 < A3 <=8 and class -
+    elif(float(dataset.iloc[i][2]) > 8): #A3>8
         a3[3]+=1 # total sample A3>8
         if (float(dataset.iloc[i][2]) > 8) and (dataset.iloc[i][15] == '+'):
-            a3CI[3][0]+=1 #class +
+            a3CI[3][0]+=1 #count A3>8 and class +
         else:
-            a3CI[3][1]+=1 #class -
+            a3CI[3][1]+=1 #count A3>8 and class -
     
         
     #A4
-    if (dataset.iloc[i][3] == 'u'): 
+    if (dataset.iloc[i][3] == 'u'):     #A4 = u
         a4[0]+=1 # total sample A4 = u
         if (dataset.iloc[i][3] == 'u') and (dataset.iloc[i][15] == '+'):
             a4CI[0][0]+=1 #count A4 = u and class +
         else:
-            a4CI[0][1]+=1 #class -
-    elif(dataset.iloc[i][3] == 'y'): 
+            a4CI[0][1]+=1 #count A4 = u and class -
+    elif(dataset.iloc[i][3] == 'y'):    #A4 = y
         a4[1]+=1 # total sample A4 = y
         if (dataset.iloc[i][3] == 'y') and (dataset.iloc[i][15] == '+'):
             a4CI[1][0]+=1 #count A4 = y and class +
         else:
-            a4CI[1][1]+=1 #class -
-    elif(dataset.iloc[i][3] == 'l'): 
+            a4CI[1][1]+=1 #count A4 = y and class -
+    elif(dataset.iloc[i][3] == 'l'):    #A4 = l
         a4[2]+=1 # total sample A4 = l
         if (dataset.iloc[i][3] == 'l') and (dataset.iloc[i][15] == '+'):
             a4CI[2][0]+=1 #count A4 = l and class +
         else:
-            a4CI[2][1]+=1 #class -
-    elif(dataset.iloc[i][3] == 't'): 
+            a4CI[2][1]+=1 #count A4 = l and class -
+    elif(dataset.iloc[i][3] == 't'):    #A4 = t
         a4[3]+=1 # total sample A4 = t
         if (dataset.iloc[i][3] == 't') and (dataset.iloc[i][15] == '+'):
             a4CI[3][0]+=1 #count A4 = t and class +
         else:
-            a4CI[3][1]+=1 #class -
+            a4CI[3][1]+=1 #count A4 = t and class -
 
     #A5
-    if (dataset.iloc[i][4] == 'g'): 
+    if (dataset.iloc[i][4] == 'g'):     #A5 = g
         a5[0]+=1 # total sample A5 = g
         if (dataset.iloc[i][4] == 'g') and (dataset.iloc[i][15] == '+'):
-            a5CI[0][0]+=1 #class +
+            a5CI[0][0]+=1 #count A5 = g and class +
         else:
-            a5CI[0][1]+=1 #class -
-    elif(dataset.iloc[i][4] == 'p'): 
+            a5CI[0][1]+=1 #count A5 = g and class -
+    elif(dataset.iloc[i][4] == 'p'):    #A5 = p
         a5[1]+=1 # total sample A5 = p
         if (dataset.iloc[i][4] == 'p') and (dataset.iloc[i][15] == '+'):
-            a5CI[1][0]+=1 #class +
+            a5CI[1][0]+=1 #count A5 = p and class +
         else:
-            a5CI[1][1]+=1 #class -
-    elif(dataset.iloc[i][4] == 'gg'): 
+            a5CI[1][1]+=1 #count A5 = p and class -
+    elif(dataset.iloc[i][4] == 'gg'):   #A5 = gg
         a5[2]+=1 # total sample A5 = gg
         if (dataset.iloc[i][4] == 'gg') and (dataset.iloc[i][15] == '+'):
-            a5CI[2][0]+=1 #class +
+            a5CI[2][0]+=1 #count A5 = gg and class +
         else:
-            a5CI[2][1]+=1 #class -
+            a5CI[2][1]+=1 #A5 = gg and class -
 
     #A6
-    if (dataset.iloc[i][5] == 'c'): 
+    if (dataset.iloc[i][5] == 'c'):     #A6 = c
         a6[0]+=1 # total sample A6 = c
         if (dataset.iloc[i][5] == 'c') and (dataset.iloc[i][15] == '+'):
-            a6CI[0][0]+=1 #class +
+            a6CI[0][0]+=1 #count A6 = c and class +
         else:
-            a6CI[0][1]+=1 #class -
-    elif(dataset.iloc[i][5] == 'd'): 
+            a6CI[0][1]+=1 #count A6 = c and class -
+    elif(dataset.iloc[i][5] == 'd'):    #A6 = d
         a6[1]+=1 # total sample A6 = d
         if (dataset.iloc[i][5] == 'd') and (dataset.iloc[i][15] == '+'):
-            a6CI[1][0]+=1 #class +
+            a6CI[1][0]+=1 #count A6 = d and class +
         else:
-            a6CI[1][1]+=1 #class -
-    elif(dataset.iloc[i][5] == 'cc'): 
+            a6CI[1][1]+=1 #count A6 = d and class -
+    elif(dataset.iloc[i][5] == 'cc'):   #A6 = cc
         a6[2]+=1 # total sample A6 = cc
         if (dataset.iloc[i][5] == 'cc') and (dataset.iloc[i][15] == '+'):
-            a6CI[2][0]+=1 #class +
+            a6CI[2][0]+=1 #count A6 = cc and class +
         else:
-            a6CI[2][1]+=1 #class -
-    elif(dataset.iloc[i][5] == 'i'): 
+            a6CI[2][1]+=1 #count A6 = cc and class -
+    elif(dataset.iloc[i][5] == 'i'):    #A6 = i
         a6[3]+=1 # total sample A6 = i
         if (dataset.iloc[i][5] == 'i') and (dataset.iloc[i][15] == '+'):
-            a6CI[3][0]+=1 #class +
+            a6CI[3][0]+=1 #count A6 = i and class +
         else:
-            a6CI[3][1]+=1 #class -
-    elif(dataset.iloc[i][5] == 'j'): 
+            a6CI[3][1]+=1 #count A6 = i and class -
+    elif(dataset.iloc[i][5] == 'j'):    #A6 = j
         a6[4]+=1 # total sample A6 = j
         if (dataset.iloc[i][5] == 'j') and (dataset.iloc[i][15] == '+'):
-            a6CI[4][0]+=1 #class +
+            a6CI[4][0]+=1 #count A6 = j and class +
         else:
-            a6CI[4][1]+=1 #class -
-    elif(dataset.iloc[i][5] == 'k'): 
+            a6CI[4][1]+=1 #count A6 = j and class -
+    elif(dataset.iloc[i][5] == 'k'):    #A6 = k
         a6[5]+=1 # total sample A6 = k
         if (dataset.iloc[i][5] == 'k') and (dataset.iloc[i][15] == '+'):
-            a6CI[5][0]+=1 #class +
+            a6CI[5][0]+=1 #count A6 = k and class +
         else:
-            a6CI[5][1]+=1 #class -
-    elif(dataset.iloc[i][5] == 'm'): 
+            a6CI[5][1]+=1 #count A6 = k and class -
+    elif(dataset.iloc[i][5] == 'm'):    #A6 = m
         a6[6]+=1 # total sample A6 = m
         if (dataset.iloc[i][5] == 'm') and (dataset.iloc[i][15] == '+'):
-            a6CI[6][0]+=1 #class +
+            a6CI[6][0]+=1 #count A6 = m and class +
         else:
-            a6CI[6][1]+=1 #class -
-    elif(dataset.iloc[i][5] == 'r'): 
+            a6CI[6][1]+=1 #count A6 = m and class -
+    elif(dataset.iloc[i][5] == 'r'):    #A6 = r
         a6[7]+=1 # total sample A6 = r
         if (dataset.iloc[i][5] == 'r') and (dataset.iloc[i][15] == '+'):
-            a6CI[7][0]+=1 #class +
+            a6CI[7][0]+=1 #count A6 = r and class +
         else:
-            a6CI[7][1]+=1 #class -
-    elif(dataset.iloc[i][5] == 'q'): 
+            a6CI[7][1]+=1 #count A6 = r and class -
+    elif(dataset.iloc[i][5] == 'q'):    # A6 = q
         a6[8]+=1 # total sample A6 = q
         if (dataset.iloc[i][5] == 'q') and (dataset.iloc[i][15] == '+'):
-            a6CI[8][0]+=1 #class +
+            a6CI[8][0]+=1 #count A6 = q and class +
         else:
-            a6CI[8][1]+=1 #class -
-    elif(dataset.iloc[i][5] == 'w'): 
+            a6CI[8][1]+=1 #count A6 = q and class -
+    elif(dataset.iloc[i][5] == 'w'):    #A6 = w
         a6[9]+=1 # total sample A6 = w
         if (dataset.iloc[i][5] == 'w') and (dataset.iloc[i][15] == '+'):
-            a6CI[9][0]+=1 #class +
+            a6CI[9][0]+=1 #count A6 = w and class +
         else:
-            a6CI[9][1]+=1 #class -
-    elif(dataset.iloc[i][5] == 'x'): 
+            a6CI[9][1]+=1 #count A6 = w and class -
+    elif(dataset.iloc[i][5] == 'x'):    # A6 = x
         a6[10]+=1 # total sample A6 = x
         if (dataset.iloc[i][5] == 'x') and (dataset.iloc[i][15] == '+'):
-            a6CI[10][0]+=1 #class +
+            a6CI[10][0]+=1 #count A6 = x and class +
         else:
-            a6CI[10][1]+=1 #class -
-    elif(dataset.iloc[i][5] == 'e'): 
+            a6CI[10][1]+=1 #count A6 = x and class -
+    elif(dataset.iloc[i][5] == 'e'):    #A6 = e
         a6[11]+=1 # total sample A6 = e
         if (dataset.iloc[i][5] == 'e') and (dataset.iloc[i][15] == '+'):
-            a6CI[11][0]+=1 #class +
+            a6CI[11][0]+=1 #count A6 = e and class +
         else:
-            a6CI[11][1]+=1 #class -
-    elif(dataset.iloc[i][5] == 'aa'): 
+            a6CI[11][1]+=1 #count A6 = e and class -
+    elif(dataset.iloc[i][5] == 'aa'):   #A6 = aa
         a6[12]+=1 # total sample A6 = aa
         if (dataset.iloc[i][5] == 'aa') and (dataset.iloc[i][15] == '+'):
-            a6CI[12][0]+=1 #class +
+            a6CI[12][0]+=1 #count A6 = aa and class +
         else:
-            a6CI[12][1]+=1 #class -
-    elif(dataset.iloc[i][5] == 'ff'): 
+            a6CI[12][1]+=1 #count A6 = aa and class -
+    elif(dataset.iloc[i][5] == 'ff'):   #A6 = ff
         a6[13]+=1 # total sample A6 = ff
         if (dataset.iloc[i][5] == 'ff') and (dataset.iloc[i][15] == '+'):
-            a6CI[13][0]+=1 #class +
+            a6CI[13][0]+=1 #count A6 = ff and class +
         else:
-            a6CI[13][1]+=1 #class -
+            a6CI[13][1]+=1 #count A6 = ff and class -
 
     #A7
-    if (dataset.iloc[i][6] == 'v'): 
-        a7[0]+=1 # total sample A6 = v
+    if (dataset.iloc[i][6] == 'v'):     #A7 = v
+        a7[0]+=1 # total sample A7 = v
         if (dataset.iloc[i][6] == 'v') and (dataset.iloc[i][15] == '+'):
-            a7CI[0][0]+=1 #class +
+            a7CI[0][0]+=1 #count A7 = v and class +
         else:
-            a7CI[0][1]+=1 #class -
-    elif (dataset.iloc[i][6] == 'h'): 
-        a7[1]+=1 # total sample A6 = h
+            a7CI[0][1]+=1 #count A7 = v and class -
+    elif (dataset.iloc[i][6] == 'h'):   #A7 = h
+        a7[1]+=1 # total sample A7 = h
         if (dataset.iloc[i][6] == 'h') and (dataset.iloc[i][15] == '+'):
-            a7CI[1][0]+=1 #class +
+            a7CI[1][0]+=1 #count A7 = h and class +
         else:
-            a7CI[1][1]+=1 #class -
-    elif (dataset.iloc[i][6] == 'bb'): 
-        a7[2]+=1 # total sample A6 = bb
+            a7CI[1][1]+=1 #count A7 = h and class -
+    elif (dataset.iloc[i][6] == 'bb'):  #A7 = bb
+        a7[2]+=1 # total sample A7 = bb
         if (dataset.iloc[i][6] == 'bb') and (dataset.iloc[i][15] == '+'):
-            a7CI[2][0]+=1 #class +
+            a7CI[2][0]+=1 #count A7 = bb and class +
         else:
-            a7CI[2][1]+=1 #class -
-    elif (dataset.iloc[i][6] == 'j'): 
-        a7[3]+=1 # total sample A6 = j
+            a7CI[2][1]+=1 #count A7 = bb and class -
+    elif (dataset.iloc[i][6] == 'j'):   #A7 = j
+        a7[3]+=1 # total sample A7 = j
         if (dataset.iloc[i][6] == 'j') and (dataset.iloc[i][15] == '+'):
-            a7CI[3][0]+=1 #class +
+            a7CI[3][0]+=1 #count A7 = j and class +
         else:
-            a7CI[3][1]+=1 #class -
-    elif (dataset.iloc[i][6] == 'n'): 
-        a7[4]+=1 # total sample A6 = n
+            a7CI[3][1]+=1 #count A7 = j and class -
+    elif (dataset.iloc[i][6] == 'n'):   #A7 = n
+        a7[4]+=1 # total sample A7 = n
         if (dataset.iloc[i][6] == 'n') and (dataset.iloc[i][15] == '+'):
-            a7CI[4][0]+=1 #class +
+            a7CI[4][0]+=1 #count A7 = n and class +
         else:
-            a7CI[4][1]+=1 #class -
-    elif (dataset.iloc[i][6] == 'z'): 
-        a7[5]+=1 # total sample A6 = z
+            a7CI[4][1]+=1 #count A7 = n and class -
+    elif (dataset.iloc[i][6] == 'z'):   #A7 = z
+        a7[5]+=1 # total sample A7 = z
         if (dataset.iloc[i][6] == 'z') and (dataset.iloc[i][15] == '+'):
-            a7CI[5][0]+=1 #class +
+            a7CI[5][0]+=1 #count A7 = z and class +
         else:
-            a7CI[5][1]+=1 #class -
-    elif (dataset.iloc[i][6] == 'dd'): 
-        a7[6]+=1 # total sample A6 = dd
+            a7CI[5][1]+=1 #count A7 = z and class -
+    elif (dataset.iloc[i][6] == 'dd'):  #A7 = dd
+        a7[6]+=1 # total sample A7 = dd
         if (dataset.iloc[i][6] == 'dd') and (dataset.iloc[i][15] == '+'):
-            a7CI[6][0]+=1 #class +
+            a7CI[6][0]+=1 #count A7 = dd and class +
         else:
-            a7CI[6][1]+=1 #class -
-    elif (dataset.iloc[i][6] == 'ff'): 
-        a7[7]+=1 # total sample A6 = ff
+            a7CI[6][1]+=1 #count A7 = dd and class -
+    elif (dataset.iloc[i][6] == 'ff'):  #A7 = ff
+        a7[7]+=1 # total sample A7 = ff
         if (dataset.iloc[i][6] == 'ff') and (dataset.iloc[i][15] == '+'):
-            a7CI[7][0]+=1 #class +
+            a7CI[7][0]+=1 #count A7 = ff and class +
         else:
-            a7CI[7][1]+=1 #class -
-    elif (dataset.iloc[i][6] == 'o'): 
-        a7[8]+=1 # total sample A6 = o
+            a7CI[7][1]+=1 #count A7 = ff and class -
+    elif (dataset.iloc[i][6] == 'o'):   #A7 = o
+        a7[8]+=1 # total sample A7 = o
         if (dataset.iloc[i][6] == 'o') and (dataset.iloc[i][15] == '+'):
-            a7CI[8][0]+=1 #class +
+            a7CI[8][0]+=1 #count A7 = o and class +
         else:
-            a7CI[8][1]+=1 #class -
+            a7CI[8][1]+=1 #count A7 = o and class -
     
     #A8
-    if (float(dataset.iloc[i][7]) <= 0.2): 
+    if (float(dataset.iloc[i][7]) <= 0.2):  #A8<=0.2
         a8[0]+=1 # total sample A8<=0.2
         if (float(dataset.iloc[i][7]) <= 0.2) and (dataset.iloc[i][15] == '+'):
-            a8CI[0][0]+=1 #class +
+            a8CI[0][0]+=1 #count A8<=0.2 and class +
         else:
-            a8CI[0][1]+=1 #class -
-    elif(float(dataset.iloc[i][7]) >0.2 and float(dataset.iloc[i][7])<=1): 
+            a8CI[0][1]+=1 #count A8<=0.2 and class -
+    elif(float(dataset.iloc[i][7]) >0.2 and float(dataset.iloc[i][7])<=1):  # 0.2 < A8 <= 1
         a8[1]+=1 # total sample 0.2 < A8 <= 1
         if (float(dataset.iloc[i][7]) >0.2 and float(dataset.iloc[i][7])<=1) and (dataset.iloc[i][15] == '+'):
-            a8CI[1][0]+=1 #class +
+            a8CI[1][0]+=1 #count  0.2 < A8 <= 1 and class +
         else:
-            a8CI[1][1]+=1 #class -
-    elif(float(dataset.iloc[i][7]) >1 and float(dataset.iloc[i][7])<=3): 
+            a8CI[1][1]+=1 #count  0.2 < A8 <= 1 and class -
+    elif(float(dataset.iloc[i][7]) >1 and float(dataset.iloc[i][7])<=3):    #1 < A8 <= 3
         a8[2]+=1 # total sample 1 < A8 <= 3
         if (float(dataset.iloc[i][7]) >1 and float(dataset.iloc[i][7])<=3) and (dataset.iloc[i][15] == '+'):
-            a8CI[2][0]+=1 #class +
+            a8CI[2][0]+=1 #count 1 < A8 <= 3 and class +
         else:
-            a8CI[2][1]+=1 #class -
-    elif(float(dataset.iloc[i][7]) > 3): 
+            a8CI[2][1]+=1 #count 1 < A8 <= 3 and class -
+    elif(float(dataset.iloc[i][7]) > 3):    # A8 >3
         a8[3]+=1 # total sample  A8 >3
         if (float(dataset.iloc[i][7]) > 3) and (dataset.iloc[i][15] == '+'):
-            a8CI[3][0]+=1 #class +
+            a8CI[3][0]+=1 #count  A8 >3 and class +
         else:
-            a8CI[3][1]+=1 #class -
+            a8CI[3][1]+=1 #count  A8 >3 and class -
 
     #A9
     if (dataset.iloc[i][8] == 't'): 
@@ -652,7 +651,8 @@ Info_A2 = inforD(a2,[a2CI[0][2],a2CI[1][2],a2CI[2][2],a2CI[3][2]])
 Info_A3 = inforD(a3,[a3CI[0][2],a3CI[1][2],a3CI[2][2],a3CI[3][2]]) 
 Info_A4 = inforD(a4,[a4CI[0][2],a4CI[1][2],a4CI[2][2],a4CI[3][2]])
 Info_A5 = inforD(a5,[a5CI[0][2],a5CI[1][2],a5CI[2][2]])
-Info_A6 = inforD(a6,[a6CI[0][2],a6CI[1][2],a6CI[2][2],a6CI[3][2],a6CI[4][2],a6CI[5][2],a6CI[6][2],a6CI[7][2],a6CI[8][2],a6CI[9][2],a6CI[10][2],a6CI[11][2],a6CI[12][2],a6CI[13][2]])
+Info_A6 = inforD(a6,[a6CI[0][2],a6CI[1][2],a6CI[2][2],a6CI[3][2],a6CI[4][2],a6CI[5][2],a6CI[6][2],a6CI[7][2],
+                    a6CI[8][2],a6CI[9][2],a6CI[10][2],a6CI[11][2],a6CI[12][2],a6CI[13][2]])
 Info_A7 = inforD(a7,[a7CI[0][2],a7CI[1][2],a7CI[2][2],a7CI[3][2],a7CI[4][2],a7CI[5][2],a7CI[6][2],a7CI[7][2],a7CI[8][2]])
 Info_A8 = inforD(a8,[a8CI[0][2],a8CI[1][2],a8CI[2][2],a8CI[3][2]]) 
 Info_A9 = inforD(a9,[a9CI[0][2],a9CI[1][2]])
@@ -660,7 +660,8 @@ Info_A10 = inforD(a10,[a10CI[0][2],a10CI[1][2]])
 Info_A11 = inforD(a11,[a11CI[0][2],a11CI[1][2]]) 
 Info_A12 = inforD(a12,[a12CI[0][2],a12CI[1][2]])
 Info_A13 = inforD(a13,[a13CI[0][2],a13CI[1][2],a13CI[2][2]])
-Info_A14 = inforD(a14,[a14CI[0][2],a14CI[1][2],a14CI[2][2],a14CI[3][2],a14CI[4][2],a14CI[5][2],a14CI[6][2],a14CI[7][2],a14CI[8][2],a14CI[9][2],a14CI[10][2],a14CI[11][2]])
+Info_A14 = inforD(a14,[a14CI[0][2],a14CI[1][2],a14CI[2][2],a14CI[3][2],a14CI[4][2],a14CI[5][2],a14CI[6][2],a14CI[7][2],
+                        a14CI[8][2],a14CI[9][2],a14CI[10][2],a14CI[11][2]])
 Info_A15 = inforD(a15,[a15CI[0][2],a15CI[1][2],a15CI[2][2]]) 
 
 
@@ -701,7 +702,6 @@ print("A14 Info relate to class",a14CI)
 print("A15 Info relate to class",a15CI)
 
 print()
-
 print("Info(D) is %5.3f" % InD)
 print("Info(A1 = b)  is %5.3f" % a1CI[0][2])
 print("Info(A1 = a)  is %5.3f" % a1CI[1][2])
@@ -727,7 +727,7 @@ print("Info(A5 = gg)  is %5.3f" % a5CI[2][2])
 
 print("Info(A6 = c)  is %5.3f" % a6CI[0][2])
 print("Info(A6 = d) is %5.3f" % a6CI[1][2])
-print("Info(A6 = cc  is %5.3f" % a6CI[2][2])
+print("Info(A6 = cc)  is %5.3f" % a6CI[2][2])
 print("Info(A6 = i)  is %5.3f" % a6CI[3][2])
 print("Info(A6 = j)  is %5.3f" % a6CI[4][2])
 print("Info(A6 = k)  is %5.3f" % a6CI[5][2])
@@ -810,9 +810,9 @@ print("Info A12 (D) is %5.3f" % Info_A12)
 print("Info A13 (D) is %5.3f" % Info_A13)
 print("Info A14 (D) is %5.3f" % Info_A14)
 print("Info A15 (D) is %5.3f" % Info_A15)
-
-print()
 """
+print()
+
 print("\n***Gain results of all dataset***")
 print("InD is %5.3f"% InD)
 gainA1=InD-Info_A1
@@ -859,12 +859,12 @@ print()
 X2L=[] #ข้อมูลสำหรับสร้าง level 2 ที่ A9 = t 
 X2R=[] #ข้อมูลสำหรับสร้าง level 2 ที่ A9 = f
 
-
+#loop ทุก instance ใน training set
 for i in range(len(dataset)):
-    if (dataset.iloc[i][8] == 't'): 
-        X2L.append(dataset.iloc[i])
-    elif (dataset.iloc[i][8] == 'f'): 
-        X2R.append(dataset.iloc[i])
+    if (dataset.iloc[i][8] == 't'):     #A9 = t 
+        X2L.append(dataset.iloc[i])     #เก็บลงใน list สำหรับ A9 = t เพื่อเขียนเป็น csv
+    elif (dataset.iloc[i][8] == 'f'):   #A9 = f
+        X2R.append(dataset.iloc[i])     #เก็บลงใน list สำหรับ A9 = f เพื่อเขียนเป็น csv
         
 # write csv file
 crx2L = pd.DataFrame(X2L)
@@ -875,84 +875,91 @@ crx2R.to_csv('data/lv2/crx2R.csv', index=False, header=False)   #write without i
 
 
 ##Left Side
-print("******************************************************************")
-#Lv2 Left
-#Read file 
-data_2L = pd.read_csv("data/lv2/crx2L.csv", names=dataset_col, dtype={'A14': str})   #read data
-dataset.head()
-print()
-findmaxgainLv2L(data_2L)    #call recursive to find max gain
-print()                     #got A8
-print()
-print()
+# print("******************************************************************")
+# #Lv2 Left
+# #Read file 
+# data_2L = pd.read_csv("data/lv2/crx2L.csv", names=dataset_col, dtype={'A14': str})   #read data
+# dataset.head()
+# print()
+# findmaxgainLv2L(data_2L)    #call recursive to find max gain
+# print()                     #got A8
+# print()
+# print()
 
 
-print("******************************************************************")
-#Lv3 Left 2    A14 = X01XX
-#Read file 
-data_3L2 = pd.read_csv("data/lv3/crx3L2.csv", names=dataset_col, dtype={'A14': str})   #read data
-dataset.head()
+# print("******************************************************************")
+# #Lv3 Left 2    A14 = X01XX
+# #Read file 
+# data_3L2 = pd.read_csv("data/lv3/crx3L2.csv", names=dataset_col, dtype={'A14': str})   #read data
+# dataset.head()
 
-print()
-findmaxgainLv3L2(data_3L2)    #call recursive to find max gain    
-print()                       #Got A6
-print()
-print()
-
-
-print("******************************************************************")
-##Level 3 Left 3      A14 = X02XX
-#Read file 
-data_3L3 = pd.read_csv("data/lv3/crx3L3.csv", names=dataset_col, dtype={'A14': str})   #read data
-dataset.head()
-
-print()
-findmaxgainLv3L3(data_3L3)        #call recursive to find max gain 
-print()                           #Got A6
-print()
-print()
+# print()
+# findmaxgainLv3L2(data_3L2)    #call recursive to find max gain    
+# print()                       #Got A6
+# print()
+# print()
 
 
+# print("******************************************************************")
+# ##Level 3 Left 3      A14 = X02XX
+# #Read file 
+# data_3L3 = pd.read_csv("data/lv3/crx3L3.csv", names=dataset_col, dtype={'A14': str})   #read data
+# dataset.head()
 
-print("******************************************************************")
-#Level 3 Left 4    A14 = X03XX
-#Read file 
-data_3L4 = pd.read_csv("data/lv3/crx3L4.csv", names=dataset_col, dtype={'A14': str})   #read data
-dataset.head()
-
-print()
-findmaxgainLv3L4(data_3L4)    #call recursive to find max gain
-print()                       #Got A15
-print()
-print()
-
-print("******************************************************************")
-#Lv3 Left 5    A14 = X04XX
-#Read file 
-data_3L5 = pd.read_csv("data/lv3/crx3L5.csv", names=dataset_col, dtype={'A14': str})   #read data
-dataset.head()
-
-print()
-findmaxgainLv3L5(data_3L5)       #call recursive to find max gain
-print()
-print()
-print()
+# print()
+# findmaxgainLv3L3(data_3L3)        #call recursive to find max gain 
+# print()                           #Got A6
+# print()
+# print()
 
 
 
-#Right Side
-#Level 2 Right Finish
-print("******************************************************************")
-#Read file 
-data_2R = pd.read_csv("data/lv2/crx2R.csv", names=dataset_col, dtype={'A14': str})   #read data
-dataset.head()
+# print("******************************************************************")
+# #Level 3 Left 4    A14 = X03XX
+# #Read file 
+# data_3L4 = pd.read_csv("data/lv3/crx3L4.csv", names=dataset_col, dtype={'A14': str})   #read data
+# dataset.head()
 
-print()
-findmaxgainLv2R(data_2R)      #Got A6
-print()
-print()
-print()
+# print()
+# findmaxgainLv3L4(data_3L4)    #call recursive to find max gain
+# print()                       #Got A6
+# print()
+# print()
 
+# print("******************************************************************")
+# #Lv3 Left 5    A14 = X04XX
+# #Read file 
+# data_3L5 = pd.read_csv("data/lv3/crx3L5.csv", names=dataset_col, dtype={'A14': str})   #read data
+# dataset.head()
+
+# print()
+# findmaxgainLv3L5(data_3L5)       #call recursive to find max gain
+# print()                           #Got A6
+# print()
+# print()
+
+
+
+# #Right Side
+# #Level 2 Right Finish
+# print("******************************************************************")
+# #Read file 
+# data_2R = pd.read_csv("data/lv2/crx2R.csv", names=dataset_col, dtype={'A14': str})   #read data
+# dataset.head()
+
+# print()
+# findmaxgainLv2R(data_2R)      #Got A6
+# print()
+# print()
+# print()
+
+
+#test with training
+print("########################################################")
+print()
+print("With Training")
+print()
+testing(dataset)
 
 
 
